@@ -47,12 +47,11 @@
         </td>
 
         <td>
-                        <a href="/customer/delete?id=<%=customer.getId()%>">Delete</a>
+            <a href="/customer/delete?id=<%=customer.getId()%>">Delete</a>
         </td>
 
         <td>
-            <%--            <a href="/bla?id=<%=customer.getId()%>">Info</a>--%>
-            <a>Info</a>
+            <a href="/customer/info?id=<%=customer.getId()%>">Info</a>
         </td>
 
     </tr>

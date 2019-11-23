@@ -17,7 +17,7 @@ import java.math.RoundingMode;
 import java.rmi.Remote;
 import java.util.List;
 
-@WebServlet(name = "EditProductServlet", value = "/syka")
+@WebServlet(name = "EditProductServlet", value = "/product/edit")
 public class EditProductServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
@@ -55,7 +55,7 @@ public class EditProductServlet extends HttpServlet {
 
         request.setAttribute("product",product);
 
-        RequestDispatcher requestDispatcher = request.getRequestDispatcher("WEB-INF/pages/editProduct.jsp");
+        RequestDispatcher requestDispatcher = request.getRequestDispatcher("/WEB-INF/pages/editProduct.jsp");
         requestDispatcher.forward(request,response);
 
         response.sendRedirect("/product/all");

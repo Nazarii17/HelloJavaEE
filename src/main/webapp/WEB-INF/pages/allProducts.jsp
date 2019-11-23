@@ -50,7 +50,7 @@
         </td>
 
         <td>
-            <a href="/syka?id=<%=product.getId()%>">Edit</a>
+            <a href="/product/edit?id=<%=product.getId()%>">Edit</a>
         </td>
 
         <td>
@@ -58,7 +58,7 @@
         </td>
 
         <td>
-            <a href="/bla?id=<%=product.getId()%>">Info</a>
+            <a href="/product/info?id=<%=product.getId()%>">Info</a>
         </td>
 
     </tr>

@@ -52,35 +52,35 @@ public class CustomerDao implements DAO<Customer> {
 
     @Override
     public List<Customer> getAll() {
-//        List<Customer> customers = JdbcProvider.getJdbcTemplate().query(
-//                "select id, name, lastName, phoneNumber, email from customer;",
-//                new BeanPropertyRowMapper(Customer.class));
-//        return customers;
-        String sql = "SELECT t.* FROM drugstoredb.customer t;";
-
-        ResultSet resultSet;
-        PreparedStatement preparedStatement;
-        List<Customer> customerList = new ArrayList<>();
-
-        try {
-            resultSet = ConnectionManager.getConnection().prepareStatement(sql).executeQuery();
-
-            while (resultSet.next()) {
-                customerList.add(new Customer(
-                        resultSet.getInt("id"),
-                        resultSet.getString("name"),
-                        resultSet.getString("lastName"),
-                        resultSet.getString("phoneNumber"),
-                        resultSet.getString("email")
-                ));
-            }
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-        if (customerList.isEmpty()) {
-            throw new RuntimeException("Got nothing from db!");
-        }
-        return customerList;
+        List<Customer> customers = JdbcProvider.getJdbcTemplate().query(
+                "select id, name, lastName, phoneNumber, email from customer;",
+                new BeanPropertyRowMapper(Customer.class));
+        return customers;
+//        String sql = "SELECT t.* FROM drugstoredb.customer t;";
+//
+//        ResultSet resultSet;
+//        PreparedStatement preparedStatement;
+//        List<Customer> customerList = new ArrayList<>();
+//
+//        try {
+//            resultSet = ConnectionManager.getConnection().prepareStatement(sql).executeQuery();
+//
+//            while (resultSet.next()) {
+//                customerList.add(new Customer(
+//                        resultSet.getInt("id"),
+//                        resultSet.getString("name"),
+//                        resultSet.getString("lastName"),
+//                        resultSet.getString("phoneNumber"),
+//                        resultSet.getString("email")
+//                ));
+//            }
+//        } catch (SQLException e) {
+//            e.printStackTrace();
+//        }
+//        if (customerList.isEmpty()) {
+//            throw new RuntimeException("Got nothing from db!");
+//        }
+//        return customerList;
     }
 
     //    @Override
