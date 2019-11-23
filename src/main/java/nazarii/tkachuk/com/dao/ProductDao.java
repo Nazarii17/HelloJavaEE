@@ -96,7 +96,7 @@ public class ProductDao implements DAO<Product> {
         int rowsInserted = 0;
         try {
             preparedStatement.setString(1, product.getName());
-            preparedStatement.setString(2, product.getPrice().setScale(2, RoundingMode.HALF_EVEN).toString());
+            preparedStatement.setString(2, product.getPrice().setScale(2, RoundingMode.HALF_UP).toString());
             preparedStatement.setString(3, product.getInfo());
             preparedStatement.setString(4, product.getDiscount().toString());
             preparedStatement.setString(5, product.getCategoryID().toString());

@@ -27,10 +27,8 @@
         <th colspan="3">Operations</th>
     </tr>
 
-
     <%
         for (Product product : (List<Product>) request.getAttribute("products")) {
-
     %>
     <tr>
         <td><%=product.getId()%>

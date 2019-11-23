@@ -1,9 +1,14 @@
 package nazarii.tkachuk.com.dao;
 
 import nazarii.tkachuk.com.entities.Customer;
+import nazarii.tkachuk.com.providers.ConnectionManager;
 import nazarii.tkachuk.com.providers.JdbcProvider;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
 
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -12,22 +17,72 @@ public class CustomerDao implements DAO<Customer> {
     @Override
     public Optional<Customer> getByID(int id) {
 
-        Customer customer = JdbcProvider.getJdbcTemplate().queryForObject(
-                "select id, name, lastName, phoneNumber, email " +
-                        "from drugstoredb.customer " +
-                        "where id = " + id + ";",
-                BeanPropertyRowMapper.newInstance(Customer.class));
+//        //c3p0 - не праює через проперті
+//        Customer customer = JdbcProvider.getJdbcTemplate().queryForObject(
+//                "select id, name, lastName, phoneNumber, email " +
+//                        "from drugstoredb.customer " +
+//                        "where id = " + id + ";",
+//                BeanPropertyRowMapper.newInstance(Customer.class));
+//
+//        return Optional.of(customer);
+        String sql = "select id, name, lastName, phoneNumber, email " +
+                "from drugstoredb.customer " +
+                "where id = " + id + ";";
 
+        ResultSet resultSet;
+        Customer customer = null;
+
+        try {
+            resultSet = ConnectionManager.getConnection().prepareStatement(sql).executeQuery();
+
+            while (resultSet.next()) {
+                customer = new Customer(
+                        resultSet.getInt("id"),
+                        resultSet.getString("name"),
+                        resultSet.getString("lastName"),
+                        resultSet.getString("phoneNumber"),
+                        resultSet.getString("email")
+                );
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
         return Optional.of(customer);
     }
 
     @Override
     public List<Customer> getAll() {
-        List<Customer> customers = JdbcProvider.getJdbcTemplate().query(
-                "select id, name, lastName, phoneNumber, email from customer;",
-                new BeanPropertyRowMapper(Customer.class));
-        return customers;
+//        List<Customer> customers = JdbcProvider.getJdbcTemplate().query(
+//                "select id, name, lastName, phoneNumber, email from customer;",
+//                new BeanPropertyRowMapper(Customer.class));
+//        return customers;
+        String sql = "SELECT t.* FROM drugstoredb.customer t;";
+
+        ResultSet resultSet;
+        PreparedStatement preparedStatement;
+        List<Customer> customerList = new ArrayList<>();
+
+        try {
+            resultSet = ConnectionManager.getConnection().prepareStatement(sql).executeQuery();
+
+            while (resultSet.next()) {
+                customerList.add(new Customer(
+                        resultSet.getInt("id"),
+                        resultSet.getString("name"),
+                        resultSet.getString("lastName"),
+                        resultSet.getString("phoneNumber"),
+                        resultSet.getString("email")
+                ));
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        if (customerList.isEmpty()) {
+            throw new RuntimeException("Got nothing from db!");
+        }
+        return customerList;
     }
+
     //    @Override
 //    public List<Customer> getAll() {
 //        List<Customer> customers = JdbcProvider.getJdbcTemplate().query(

@@ -51,6 +51,7 @@
                        id="phonenumber"
                        name="phonenumber"
                        pattern="[0-9]{3}[0-9]{3}[0-9]{3}"
+                       max="9"
                        required/>
             </td>
 
