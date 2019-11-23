@@ -47,8 +47,7 @@
         </td>
 
         <td>
-            <%--            <a href="/customer/delete?id=<%=customer.getId()%>">Delete</a>--%>
-            <a>Delete</a>
+                        <a href="/customer/delete?id=<%=customer.getId()%>">Delete</a>
         </td>
 
         <td>
