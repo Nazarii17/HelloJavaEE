@@ -1,4 +1,5 @@
-<%--
+<%@ page import="nazarii.tkachuk.com.entities.Category" %>
+<%@ page import="java.util.List" %><%--
   Created by IntelliJ IDEA.
   User: User
   Date: 15.11.2019
@@ -45,6 +46,24 @@
             </td>
 
             <td>
+                <label for="category">Category </label>
+            </td>
+            <td>
+                <select id="category" name="categoryID">
+                    <%
+                        for (Category category : (List<Category>) request.getAttribute("categoryList")) {
+                    %>
+                    <option title="Chose category of the product"
+                            value="<%=category.getId()%>">
+                        <%=category.getName()%>
+                    </option>
+                    <%
+                        }
+                    %>
+                </select>
+            </td>
+
+            <td>
                 <label for="quantity">Quantity</label>
             </td>
             <td>
@@ -62,7 +81,7 @@
             <td>
                 <input type="number"
                        title="Chose discount of the product"
-                       placeholder="Discount"
+                       placeholder="Discount "
                        id="discount"
                        min="0" max="100"
                        name="discount"/>
@@ -76,13 +95,12 @@
         <label for="info" class="form-field__label">Information</label>
         <textarea id="info"
                   name="info"
-                  class="form-field__textarea"
+        <%--                  class="form-field__textarea"--%>
                   title="Write information about the product"
                   placeholder="Information"
                   style=" min-width: 80%; max-width:100%;
-                          min-height: 150px ; max-height: 100%">
-
-        </textarea>
+                          min-height: 150px ; max-height: 100%"
+        ></textarea>
     </p>
 
     <hr>

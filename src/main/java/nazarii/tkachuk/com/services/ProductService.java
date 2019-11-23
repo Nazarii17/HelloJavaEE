@@ -1,6 +1,6 @@
 package nazarii.tkachuk.com.services;
 
-import nazarii.tkachuk.com.dao.ProductDAO;
+import nazarii.tkachuk.com.dao.ProductDao;
 import nazarii.tkachuk.com.entities.Product;
 
 import java.math.BigDecimal;
@@ -9,7 +9,7 @@ import java.util.List;
 
 public class ProductService {
 
-    ProductDAO productDAO = new ProductDAO();
+    ProductDao productDAO = new ProductDao();
 
     public Product getByID(int id) {
         return productDAO.getByID(id).get();

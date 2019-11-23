@@ -11,7 +11,7 @@ public class Product extends EntityID /*implements CSVSerializable*/ {
     private BigDecimal price;
     private String info;
     private Integer discount;
-    private String category;
+    private Integer categoryID;
     private Integer quantity;
 
     public Product() {
@@ -36,13 +36,13 @@ public class Product extends EntityID /*implements CSVSerializable*/ {
         this.discount = discount;
     }
 
-    public Product(String name, BigDecimal price, String info, Integer discount, String category, Integer quantity) {
+    public Product(String name, BigDecimal price, String info, Integer discount, Integer categoryID, Integer quantity) {
         this.id = null;
         this.name = name;
         this.price = price.setScale(2, RoundingMode.HALF_UP);
         this.info = info;
         this.discount = discount;
-        this.category = category;
+        this.categoryID = categoryID;
         this.quantity = quantity;
     }
 
@@ -56,9 +56,19 @@ public class Product extends EntityID /*implements CSVSerializable*/ {
     public Product(Integer id, String name, BigDecimal price, String info, Integer discount) {
         this.id = id;
         this.name = name;
-        this.price = price;
+        this.price = price.setScale(2, RoundingMode.HALF_UP);
         this.info = info;
         this.discount = discount;
+    }
+
+    public Product(Integer id, String name, BigDecimal price, String info, Integer discount, Integer categoryID, Integer quantity) {
+        this.id = id;
+        this.name = name;
+        this.price = price.setScale(2, RoundingMode.HALF_UP);
+        this.info = info;
+        this.discount = discount;
+        this.categoryID = categoryID;
+        this.quantity = quantity;
     }
 
     public Integer getId() {
@@ -101,12 +111,12 @@ public class Product extends EntityID /*implements CSVSerializable*/ {
         this.discount = discount;
     }
 
-    public String getCategory() {
-        return category;
+    public Integer getCategoryID() {
+        return categoryID;
     }
 
-    public void setCategory(String category) {
-        this.category = category;
+    public void setCategoryID(Integer categoryID) {
+        this.categoryID = categoryID;
     }
 
     public Integer getQuantity() {
@@ -125,7 +135,7 @@ public class Product extends EntityID /*implements CSVSerializable*/ {
                 ", Price = " + price + "$" +
                 ", Discount = : '" + discount + "% '" +
                 ", Quantity = : '" + quantity + "'" +
-                ", Category = : '" + category + "% '" +
+                ", CategoryID = : '" + categoryID + "% '" +
                 ", \nInformation: '" + info + " '" +
                 '}';
     }

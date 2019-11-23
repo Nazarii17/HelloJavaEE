@@ -21,8 +21,9 @@
         <th>Name</th>
         <th>Price</th>
         <th>Discount</th>
-        <th>Information</th>
-        <th colspan="2">Operations</th>
+        <th>Quantity</th>
+        <th>Category</th>
+        <th colspan="3">Operations</th>
     </tr>
 
     <%
@@ -38,14 +39,21 @@
         </td>
         <td><%=product.getDiscount()%>
         </td>
-        <td><%=product.getInfo()%>
+        <td><%=product.getQuantity()%>
         </td>
+        <td><%=product.getCategoryID()%>
+        </td>
+
         <td>
             <a href="/syka?id=<%=product.getId()%>">Edit</a>
         </td>
 
         <td>
             <a href="product/delete?id=<%=product.getId()%>">Delete</a>
+        </td>
+
+        <td>
+            <a href="/bla?id=<%=product.getId()%>">Info</a>
         </td>
 
     </tr>

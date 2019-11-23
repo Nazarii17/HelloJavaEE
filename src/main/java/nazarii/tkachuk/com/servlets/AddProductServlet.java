@@ -1,7 +1,9 @@
 package nazarii.tkachuk.com.servlets;
 
+import nazarii.tkachuk.com.entities.Category;
 import nazarii.tkachuk.com.entities.Person;
 import nazarii.tkachuk.com.entities.Product;
+import nazarii.tkachuk.com.services.CategoryService;
 import nazarii.tkachuk.com.services.ProductService;
 
 import javax.servlet.RequestDispatcher;
@@ -23,9 +25,11 @@ public class AddProductServlet extends HttpServlet {
 
         Product product = new Product(
                 request.getParameter("name"),
-                new BigDecimal((request.getParameter("price"))).setScale(2,RoundingMode.HALF_EVEN),
+                new BigDecimal((request.getParameter("price"))).setScale(2,RoundingMode.HALF_UP),
                 request.getParameter("info"),
-                Integer.parseInt(request.getParameter("discount")));
+                Integer.parseInt(request.getParameter("discount")),
+                Integer.parseInt(request.getParameter("categoryID")),
+                Integer.parseInt(request.getParameter("quantity")));
 
         System.out.println(product);
 
@@ -36,7 +40,11 @@ public class AddProductServlet extends HttpServlet {
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        RequestDispatcher requestDispatcher = request.getRequestDispatcher("/WEB-INF/pages/addProduct.jsp");
+        CategoryService categoryService = new CategoryService();
+        List<Category> categoryList = categoryService.getAll();
+        request.setAttribute("categoryList", categoryList);
+
+        RequestDispatcher requestDispatcher = request.getRequestDispatcher("/WEB-INF/pages/addProduct.jsp" );
         requestDispatcher.forward(request, response);
     }
 }

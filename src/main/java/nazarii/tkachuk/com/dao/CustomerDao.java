@@ -7,7 +7,7 @@ import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import java.util.List;
 import java.util.Optional;
 
-public class CustomerDAO implements DAO<Customer> {
+public class CustomerDao implements DAO<Customer> {
 
     @Override
     public Optional<Customer> getByID(int id) {

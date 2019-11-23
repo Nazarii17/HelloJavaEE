@@ -1,13 +1,13 @@
 package nazarii.tkachuk.com.services;
 
-import nazarii.tkachuk.com.dao.CustomerDAO;
+import nazarii.tkachuk.com.dao.CustomerDao;
 import nazarii.tkachuk.com.entities.Customer;
 
 import java.util.List;
 
 public class CustomerService {
 
-    private CustomerDAO customerDAO = new CustomerDAO();
+    private CustomerDao customerDAO = new CustomerDao();
 
     public Customer getByID(int id) {
         return customerDAO.getByID(id).get();
