@@ -54,5 +54,9 @@
     Information: <%=product.getInfo()%>
 </p>
 
+<hr>
+
+<button onclick="window.location.href='/product/all'">All Products</button>
+
 </body>
 </html>

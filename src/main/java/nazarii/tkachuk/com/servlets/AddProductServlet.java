@@ -31,8 +31,6 @@ public class AddProductServlet extends HttpServlet {
                 Integer.parseInt(request.getParameter("categoryID")),
                 Integer.parseInt(request.getParameter("quantity")));
 
-        System.out.println(product);
-
         productService.save(product);
 
         response.sendRedirect("/product/all");

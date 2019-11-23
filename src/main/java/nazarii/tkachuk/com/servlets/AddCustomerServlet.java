@@ -23,9 +23,9 @@ public class AddCustomerServlet extends HttpServlet {
                 request.getParameter("phonenumber"),
                 request.getParameter("email"));
 
-        System.out.println(customer);
-
         customerService.save(customer);
+
+        response.sendRedirect("/customer/all");
 
     }
 

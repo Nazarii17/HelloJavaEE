@@ -23,14 +23,21 @@
                 <label for="name">Name</label>
             </td>
             <td>
-                <input type="text" title="Write the name of the customer" placeholder="Name" id="name" name="name"/>
+                <input type="text"
+                       title="Write the name of the customer"
+                       placeholder="Name"
+                       id="name"
+                       name="name"/>
             </td>
 
             <td>
                 <label for="lastname">Last Name</label>
             </td>
             <td>
-                <input type="text" title="Write the last name of the customer" placeholder="Last name" id="lastname"
+                <input type="text"
+                       title="Write the last name of the customer"
+                       placeholder="Last name"
+                       id="lastname"
                        name="lastname"/>
             </td>
 
@@ -43,20 +50,20 @@
                        placeholder="Phone number"
                        id="phonenumber"
                        name="phonenumber"
-                       pattern="[0-9]{3}-[0-9]{3}-[0-9]{3}"
+                       pattern="[0-9]{3}[0-9]{3}[0-9]{3}"
                        required/>
-
-                <small>Format: <b>+380</b>123-456-7890</small>
             </td>
 
             <td>
                 <label for="email">Email</label>
             </td>
             <td>
-                <input type="email" title="Write the email of the customer" placeholder="Email" id="email"
+                <input type="email"
+                       title="Write the email of the customer"
+                       placeholder="Email"
+                       id="email"
                        name="email"/>
             </td>
-
 
     </table>
 
@@ -65,6 +72,8 @@
     <input type="reset" value="Clean">
 </form>
 <hr>
+
+<button onclick="window.location.href='/customer/all'">All Customers</button>
 
 </body>
 </html>
