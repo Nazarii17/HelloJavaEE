@@ -29,7 +29,6 @@ public class CategoryDao implements DAO<Category> {
 
             resultSet = ConnectionManager.getConnection().prepareStatement(sql).executeQuery();
 
-
             while (resultSet.next()) {
                 categoryList.add(new Category(
                         resultSet.getInt("id"),

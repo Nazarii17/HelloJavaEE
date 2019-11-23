@@ -60,7 +60,6 @@ public class ProductDao implements DAO<Product> {
 
             resultSet = ConnectionManager.getConnection().prepareStatement(sql).executeQuery();
 
-
             while (resultSet.next()) {
                 productList.add(new Product(
                         resultSet.getInt("id"),

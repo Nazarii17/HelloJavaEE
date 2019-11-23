@@ -131,7 +131,7 @@
 </form>
 <hr>
 
-<button onclick="window.location.href='/products/all'">All Products</button>
+<button onclick="window.location.href='/product/all'">All Products</button>
 
 </body>
 </html>

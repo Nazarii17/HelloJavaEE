@@ -39,7 +39,7 @@ public class EditProductServlet extends HttpServlet {
 
         productService.update(product);
 
-        response.sendRedirect("/products/all");
+        response.sendRedirect("/product/all");
 
     }
 
@@ -49,7 +49,6 @@ public class EditProductServlet extends HttpServlet {
         request.setAttribute("categoryList", categoryList);
 
         ProductService productService = new ProductService();
-
         int productID = Integer.parseInt(request.getParameter("id"));
         Product product = productService.getByID(productID);
         System.out.println(product);
@@ -59,7 +58,7 @@ public class EditProductServlet extends HttpServlet {
         RequestDispatcher requestDispatcher = request.getRequestDispatcher("WEB-INF/pages/editProduct.jsp");
         requestDispatcher.forward(request,response);
 
-        response.sendRedirect("/products/all");
+        response.sendRedirect("/product/all");
 
     }
 }

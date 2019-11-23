@@ -1,5 +1,6 @@
 <%@ page import="nazarii.tkachuk.com.entities.Product" %>
-<%@ page import="java.util.List" %><%--
+<%@ page import="java.util.List" %>
+<%@ page import="nazarii.tkachuk.com.entities.Category" %><%--
   Created by IntelliJ IDEA.
   User: User
   Date: 16.11.2019
@@ -26,6 +27,7 @@
         <th colspan="3">Operations</th>
     </tr>
 
+
     <%
         for (Product product : (List<Product>) request.getAttribute("products")) {
 
@@ -41,7 +43,12 @@
         </td>
         <td><%=product.getQuantity()%>
         </td>
-        <td><%=product.getCategoryID()%>
+        <%
+            for (Category category : (List<Category>) request.getAttribute("categoryList")) {
+                if (category.getId().equals(product.getCategoryID())) {
+        %>
+
+        <td><%=category.getName()%>
         </td>
 
         <td>
@@ -49,7 +56,7 @@
         </td>
 
         <td>
-            <a href="product/delete?id=<%=product.getId()%>">Delete</a>
+            <a href="/product/delete?id=<%=product.getId()%>">Delete</a>
         </td>
 
         <td>
@@ -59,6 +66,8 @@
     </tr>
 
     <%
+                }
+            }
         }
     %>
 </table>

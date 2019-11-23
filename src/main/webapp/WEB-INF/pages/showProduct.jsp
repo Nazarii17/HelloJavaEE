@@ -1,4 +1,6 @@
-<%@ page import="nazarii.tkachuk.com.entities.Product" %><%--
+<%@ page import="nazarii.tkachuk.com.entities.Product" %>
+<%@ page import="nazarii.tkachuk.com.entities.Category" %>
+<%@ page import="java.util.List" %><%--
   Created by IntelliJ IDEA.
   User: User
   Date: 23.11.2019
@@ -34,9 +36,19 @@
     Discount: <%=product.getDiscount()%>
 </p>
 
+<%
+    for (Category category : (List<Category>) request.getAttribute("categoryList")) {
+        if (category.getId().equals(product.getCategoryID())) {
+%>
+
 <p>
-    Category: <%=product.getCategoryID()%>
+    Category: <%=category.getName()%>
 </p>
+
+<%
+        }
+    }
+%>
 
 <p>
     Information: <%=product.getInfo()%>

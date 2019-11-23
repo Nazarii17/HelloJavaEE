@@ -9,7 +9,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-@WebServlet(name = "DeleteProductServlet", value = "/products/product/delete")
+@WebServlet(name = "DeleteProductServlet", value = "/product/delete")
 public class DeleteProductServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
@@ -21,6 +21,6 @@ public class DeleteProductServlet extends HttpServlet {
         int productID = Integer.parseInt(request.getParameter("id"));
 
         productService.deleteByID(productID);
-        response.sendRedirect("/products/all");
+        response.sendRedirect("/product/all");
     }
 }
