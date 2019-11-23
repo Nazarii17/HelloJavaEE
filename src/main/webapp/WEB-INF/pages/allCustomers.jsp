@@ -42,8 +42,8 @@
         </td>
 
         <td>
-            <%--            <a href="/syka?id=<%=customer.getId()%>">Edit</a>--%>
-            <a>Edit</a>
+                        <a href="/customer/edit?id=<%=customer.getId()%>">Edit</a>
+
         </td>
 
         <td>
