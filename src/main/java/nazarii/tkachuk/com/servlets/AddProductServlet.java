@@ -35,7 +35,7 @@ public class AddProductServlet extends HttpServlet {
 
         productService.save(product);
 
-        response.sendRedirect("/products/all");
+        response.sendRedirect("/product/all");
 
     }
 
