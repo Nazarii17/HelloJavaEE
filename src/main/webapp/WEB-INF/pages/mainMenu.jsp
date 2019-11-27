@@ -24,6 +24,12 @@
 
 <button onclick="window.location.href='/product/all'">All Products</button>
 <button onclick="window.location.href='/product/add'">Add Products</button>
+
+<hr>
+<h3>Order</h3>
+
+<button onclick="window.location.href='/order/all'">All Orders</button>
+<button onclick="window.location.href='/order/add'">Add Orders</button>
 </body>
 
 

@@ -36,15 +36,20 @@
     %>
 
     <tr>
-        <td><%=customer.getId()%>
+        <td>
+            <%=customer.getId()%>
         </td>
-        <td><%=customer.getName()%>
+        <td>
+            <%=customer.getName()%>
         </td>
-        <td><%=customer.getLastName()%>
+        <td>
+            <%=customer.getLastName()%>
         </td>
-        <td><%=customer.getPhoneNumber()%>
+        <td>
+            <%=customer.getPhoneNumber()%>
         </td>
-        <td><%=customer.getEmail()%>
+        <td>
+            <%=customer.getEmail()%>
         </td>
 
         <td>

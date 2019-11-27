@@ -1,6 +1,7 @@
 package nazarii.tkachuk.com.dao;
 
 import nazarii.tkachuk.com.entities.Order;
+import nazarii.tkachuk.com.providers.ConnectionManager;
 import nazarii.tkachuk.com.providers.JdbcConnectionProvider;
 import nazarii.tkachuk.com.services.ProductService;
 
@@ -54,7 +55,8 @@ public class OrderDao implements DAO<Order> {
         List<Order> orders = new ArrayList<>();
 
         try {
-            resultSet = JdbcConnectionProvider.getPreparedStation(sql).executeQuery();
+            resultSet = ConnectionManager.getConnection().prepareStatement(sql).executeQuery();
+//            resultSet = JdbcConnectionProvider.getPreparedStation(sql).executeQuery();
 
             while (resultSet.next()) {
                 orders.add(new Order(
