@@ -19,6 +19,12 @@
 </h1>
 <hr>
 
+<p>
+    <button onclick="window.location.href='/menu'">Menu</button>
+</p>
+
+<hr>
+
 <form action="" method="post">
 
     <table>
@@ -110,6 +116,8 @@
 <hr>
 
 <button onclick="window.location.href='/product/all'">All Products</button>
+
+<hr>
 
 </body>
 </html>

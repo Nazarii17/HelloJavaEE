@@ -16,6 +16,13 @@
 <h1>All Products</h1>
 <hr>
 
+
+<p>
+    <button onclick="window.location.href='/menu'">Menu</button>
+</p>
+
+<hr>
+
 <table border="1">
     <tr>
         <th>ID</th>
@@ -73,6 +80,8 @@
 <hr>
 
 <button onclick="window.location.href='/product/add'">Add new Product</button>
+
+<hr>
 
 </body>
 </html>

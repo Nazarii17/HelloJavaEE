@@ -15,6 +15,12 @@
 <h1>All Customers</h1>
 <hr>
 
+<p>
+    <button onclick="window.location.href='/menu'">Menu</button>
+</p>
+
+<hr>
+
 <table border="1">
     <tr>
         <th>ID</th>
@@ -64,6 +70,8 @@
 <hr>
 
 <button onclick="window.location.href='/customer/add'">Add new Customer</button>
+
+<hr>
 
 </body>
 </html>
