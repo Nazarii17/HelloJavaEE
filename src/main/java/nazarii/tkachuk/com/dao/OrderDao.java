@@ -3,6 +3,7 @@ package nazarii.tkachuk.com.dao;
 import nazarii.tkachuk.com.entities.Order;
 import nazarii.tkachuk.com.providers.ConnectionManager;
 import nazarii.tkachuk.com.providers.JdbcConnectionProvider;
+import nazarii.tkachuk.com.providers.JdbcProvider;
 import nazarii.tkachuk.com.services.ProductService;
 
 import java.math.BigDecimal;
@@ -77,9 +78,9 @@ public class OrderDao implements DAO<Order> {
         return orders;
     }
 
-    public List<Order> getAllByDate(String date){
+    public List<Order> getAllByDate(String date) {
         String sql = "SELECT t.* FROM drugstoredb.`order` t " +
-                "where  t.orderDate = '"+date+"';";
+                "where  t.orderDate = '" + date + "';";
         ResultSet resultSet;
         List<Order> orders = new ArrayList<>();
 
@@ -111,16 +112,17 @@ public class OrderDao implements DAO<Order> {
                 "(`orderDate`, `quantity`, `customer_id`, `product_id`, `price`) " +
                 "VALUES ( ?, ?, ?, ?, ?)";
 
-        PreparedStatement preparedStatement = JdbcConnectionProvider.getPreparedStation(sql);
-
-        BigDecimal price = BigDecimal.valueOf(order.getQuantity()).multiply(productService.getByID(order.getProductID()).getPrice());
+//        PreparedStatement preparedStatement = JdbcConnectionProvider.getPreparedStation(sql);
+        PreparedStatement preparedStatement = null;
+//        BigDecimal price = BigDecimal.valueOf(order.getQuantity()).multiply(productService.getByID(order.getProductID()).getPrice());
 
         try {
+            preparedStatement = ConnectionManager.getConnection().prepareStatement(sql);
             preparedStatement.setTimestamp(1, order.getOrderDate());
             preparedStatement.setInt(2, order.getQuantity());
             preparedStatement.setInt(3, order.getCustomerID());
             preparedStatement.setInt(4, order.getProductID());
-            preparedStatement.setBigDecimal(5, price);
+            preparedStatement.setBigDecimal(5, order.getPrice());
 
             preparedStatement.executeUpdate();
 
@@ -147,7 +149,7 @@ public class OrderDao implements DAO<Order> {
             preparedStatement.setInt(2, Integer.parseInt(params[1]));
             preparedStatement.setInt(3, Integer.parseInt(params[2]));
             preparedStatement.setInt(4, Integer.parseInt(params[3]));
-            preparedStatement.setBigDecimal(5, new BigDecimal(params[4]) );
+            preparedStatement.setBigDecimal(5, new BigDecimal(params[4]));
 
             preparedStatement.executeUpdate();
 
@@ -192,7 +194,7 @@ public class OrderDao implements DAO<Order> {
         PreparedStatement preparedStatement = JdbcConnectionProvider.getPreparedStation(sql);
 
         try {
-            preparedStatement.setInt(1,order.getId());
+            preparedStatement.setInt(1, order.getId());
             preparedStatement.executeUpdate();
         } catch (SQLException e) {
             e.printStackTrace();
@@ -203,24 +205,27 @@ public class OrderDao implements DAO<Order> {
 
         String sql = "DELETE FROM `drugstoredb`.`order` WHERE `id` = ?";
 
-        PreparedStatement preparedStatement = JdbcConnectionProvider.getPreparedStation(sql);
+        JdbcProvider.getJdbcTemplate().update(sql, id);
 
-        try {
-            preparedStatement.setInt(1,id);
-            preparedStatement.executeUpdate();
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
+//        PreparedStatement preparedStatement = JdbcConnectionProvider.getPreparedStation(sql);
+//
+//        try {
+//            preparedStatement.setInt(1, id);
+//            preparedStatement.executeUpdate();
+//        } catch (SQLException e) {
+//            e.printStackTrace();
+//        }
     }
 
     public void deleteByDate(String date) {
 
         String sql = "DELETE FROM `drugstoredb`.`order` WHERE `orderDate` = ?";
 
-        PreparedStatement preparedStatement = JdbcConnectionProvider.getPreparedStation(sql);
-
+//        PreparedStatement preparedStatement = JdbcConnectionProvider.getPreparedStation(sql);
+        PreparedStatement preparedStatement = null;
         try {
-            preparedStatement.setString(1,date);
+            preparedStatement = ConnectionManager.getConnection().prepareStatement(sql);
+            preparedStatement.setString(1, date);
             preparedStatement.executeUpdate();
         } catch (SQLException e) {
             e.printStackTrace();

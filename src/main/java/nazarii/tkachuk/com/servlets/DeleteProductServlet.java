@@ -20,6 +20,8 @@ public class DeleteProductServlet extends HttpServlet {
 
         int productID = Integer.parseInt(request.getParameter("id"));
 
+
+
         productService.deleteByID(productID);
         response.sendRedirect("/product/all");
     }

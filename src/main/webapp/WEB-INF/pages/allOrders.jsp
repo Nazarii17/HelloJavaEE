@@ -53,7 +53,7 @@
                 if (customer.getId().equals(order.getCustomerID())) {
         %>
         <td>
-            <%=customer.getName()+" "+customer.getLastName()%>
+            <%=customer.getName() + " " + customer.getLastName()%>
 
             <%
                     }
@@ -84,8 +84,8 @@
         </td>
 
         <td>
-            <%--            <a href="/customer/delete?id=<%=customer.getId()%>">Delete</a>--%>
-            <a>Delete</a>
+            <a href="/order/delete?id=<%=order.getId()%>">Delete</a>
+
         </td>
 
         <td>
@@ -97,7 +97,6 @@
 
     <%
         }
-
     %>
 </table>
 

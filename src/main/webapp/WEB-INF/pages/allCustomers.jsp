@@ -53,7 +53,7 @@
         </td>
 
         <td>
-                        <a href="/customer/edit?id=<%=customer.getId()%>">Edit</a>
+            <a href="/customer/edit?id=<%=customer.getId()%>">Edit</a>
 
         </td>
 

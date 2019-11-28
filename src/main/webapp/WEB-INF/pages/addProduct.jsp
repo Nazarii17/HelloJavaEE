@@ -22,7 +22,6 @@
 <p>
     <button onclick="window.location.href='/menu'">Menu</button>
 </p>
-
 <hr>
 
 <form action="" method="post">
@@ -37,18 +36,22 @@
                        title="Write name of the product"
                        placeholder="Name"
                        id="name"
-                       name="name"/>
+                       name="name"
+                />
             </td>
 
             <td>
                 <label for="price">Price</label>
             </td>
             <td>
-                <input type="text"
-                       title="Write price of the product"
+                <input type="number"
+                       title="Write price of the order"
                        placeholder="Price"
                        id="price"
-                       name="price"/>
+                       name="price"
+                       min="0.00"
+                       step="0.01"
+                />
             </td>
 
             <td>
@@ -78,7 +81,8 @@
                        placeholder="Quantity"
                        id="quantity"
                        min="0"
-                       name="quantity"/>
+                       name="quantity"
+                />
             </td>
 
             <td>
@@ -90,7 +94,8 @@
                        placeholder="Discount "
                        id="discount"
                        min="0" max="100"
-                       name="discount"/>
+                       name="discount"
+                />
             </td>
 
         </tr>
@@ -101,7 +106,6 @@
         <label for="info" class="form-field__label">Information</label>
         <textarea id="info"
                   name="info"
-        <%--                  class="form-field__textarea"--%>
                   title="Write information about the product"
                   placeholder="Information"
                   style=" min-width: 80%; max-width:100%;
