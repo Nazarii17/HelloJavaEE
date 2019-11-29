@@ -169,9 +169,10 @@ public class OrderDao implements DAO<Order> {
                 "t.`price` = ? " +
                 "WHERE t.`id` = " + order.getId() + ";";
 
-        PreparedStatement preparedStatement = JdbcConnectionProvider.getPreparedStation(sql);
-
+//        PreparedStatement preparedStatement = JdbcConnectionProvider.getPreparedStation(sql);
+        PreparedStatement preparedStatement = null;
         try {
+            preparedStatement = ConnectionManager.getConnection().prepareStatement(sql);
             preparedStatement.setTimestamp(1, order.getOrderDate());
             preparedStatement.setInt(2, order.getQuantity());
             preparedStatement.setInt(3, order.getCustomerID());

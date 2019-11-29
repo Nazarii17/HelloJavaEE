@@ -1,6 +1,9 @@
 package nazarii.tkachuk.com.servlets;
 
-import nazarii.tkachuk.com.entities.*;
+import nazarii.tkachuk.com.entities.Category;
+import nazarii.tkachuk.com.entities.Customer;
+import nazarii.tkachuk.com.entities.Order;
+import nazarii.tkachuk.com.entities.Product;
 import nazarii.tkachuk.com.services.*;
 
 import javax.servlet.RequestDispatcher;
@@ -12,13 +15,10 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.math.BigDecimal;
 import java.math.RoundingMode;
-import java.sql.Timestamp;
-import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
 import java.util.List;
 
-@WebServlet(name = "AddOrderServlet", value = "/order/add")
-public class AddOrderServlet extends HttpServlet {
+@WebServlet(name = "EditOrderServlet", value = "/order/edit")
+public class EditOrderServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
         EntityIDService entityIDService = new EntityIDService();
@@ -34,13 +34,16 @@ public class AddOrderServlet extends HttpServlet {
                 new BigDecimal((request.getParameter("price"))).setScale(2, RoundingMode.HALF_UP)
         );
 
-        orderService.save(order);
+        int orderID = Integer.parseInt(request.getParameter("id"));
+        order.setId(orderID);
+
+        orderService.update(order);
 
         response.sendRedirect("/order/all");
-
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+
         ProductService productService = new ProductService();
         List<Product> productList = productService.getAll();
         request.setAttribute("productList", productList);
@@ -49,7 +52,16 @@ public class AddOrderServlet extends HttpServlet {
         List<Customer> customerList = customerService.getAll();
         request.setAttribute("customerList", customerList);
 
-        RequestDispatcher requestDispatcher = request.getRequestDispatcher("/WEB-INF/pages/addOrder.jsp");
+        OrderService orderService = new OrderService();
+        int orderID = Integer.parseInt(request.getParameter("id"));
+        Order order = orderService.getByID(orderID);
+
+        request.setAttribute("order", order);
+
+        RequestDispatcher requestDispatcher = request.getRequestDispatcher("/WEB-INF/pages/editOrder.jsp");
         requestDispatcher.forward(request, response);
+
+        response.sendRedirect("/order/all");
+
     }
 }
