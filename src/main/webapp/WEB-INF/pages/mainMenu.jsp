@@ -31,6 +31,6 @@
 <button onclick="window.location.href='/order/all'">All Orders</button>
 <button onclick="window.location.href='/order/add'">Add Orders</button>
 </body>
-
+<hr>
 
 </html>

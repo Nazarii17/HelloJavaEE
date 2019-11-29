@@ -14,6 +14,12 @@
 <h1>Information about the Customer</h1>
 <hr>
 
+<p>
+    <button onclick="window.location.href='/menu'">Menu</button>
+</p>
+
+<hr>
+
 <%
     Customer customer = (Customer) request.getAttribute("customer");
 %>

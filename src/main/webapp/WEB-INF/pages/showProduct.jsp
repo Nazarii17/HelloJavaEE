@@ -16,6 +16,12 @@
 <h1>Information about the Product</h1>
 <hr>
 
+<p>
+    <button onclick="window.location.href='/menu'">Menu</button>
+</p>
+
+<hr>
+
 <%
     Product product = (Product) request.getAttribute("product");
 %>

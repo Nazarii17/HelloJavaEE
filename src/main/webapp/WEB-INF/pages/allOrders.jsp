@@ -89,8 +89,7 @@
         </td>
 
         <td>
-            <%--            <a href="/customer/info?id=<%=customer.getId()%>">Info</a>--%>
-            <a>Info</a>
+            <a href="/order/info?id=<%=order.getId()%>">Info</a>
         </td>
 
     </tr>

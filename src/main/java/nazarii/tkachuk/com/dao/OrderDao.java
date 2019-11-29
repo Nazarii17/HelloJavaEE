@@ -30,8 +30,8 @@ public class OrderDao implements DAO<Order> {
         Order order = null;
 
         try {
-            resultSet = JdbcConnectionProvider.getPreparedStation(sql).executeQuery();
-
+//            resultSet = JdbcConnectionProvider.getPreparedStation(sql).executeQuery();
+            resultSet = ConnectionManager.getConnection().prepareStatement(sql).executeQuery();
             while (resultSet.next()) {
                 order = new Order(
                         resultSet.getInt("id"),
